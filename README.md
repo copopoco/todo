@@ -1,108 +1,60 @@
-# User Authentication Backend API Documentation
+# Authentication App Frontend
 
 ## Overview
 
-This backend application serves as the server-side component for a user authentication system. It provides endpoints for user registration, login, logout, password change, and retrieval of current user information.
+This documentation provides an overview of the frontend architecture, components, and functionalities of the authentication app.
 
-## Technologies Used
+### Purpose
 
-- Node.js: The runtime environment for running JavaScript code.
-- Express.js: A minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications.
-- MongoDB: A NoSQL database used for storing user data.
-- Mongoose: A MongoDB object modeling tool designed to work in an asynchronous environment.
-- JSON Web Tokens (JWT): Tokens used for authentication and authorization.
-- bcrypt: A library for hashing passwords.
+The frontend of the authentication app serves as the user interface where users can interact with the application to register, log in, change passwords, and log out.
 
-## Installation and Setup
+### Technologies Used
 
-1. Clone the repository from GitHub.
-2. Navigate to the project directory.
-3. Navigate to the project directory:
-```bash
-npm install
-```
-or
-```bash
-npm install
-```
-4. Create a `.env` file in the root directory and add necessary environment variables:
-```bash
-PORT=4000
-MONGODB_URI=mongodb://localhost:27017/my_database
-ACCESS_TOKEN_SECRET=your_access_token_secret
-ACCESS_TOKEN_EXPIRY=3600
-```
-5. Start the server:
-```bash
-npm start
-```
-or
-```bash
-yarn start
-```
+- React.js: A JavaScript library for building user interfaces.
+- React Router: A library for routing in React applications.
+- Axios: A promise-based HTTP client for making API requests.
+- Tailwind CSS: A utility-first CSS framework for styling.
 
-## Endpoints
+## Structure
 
-### 1. User Registration
-- URL: /api/v1/users/register
-- Method: POST
-- Request Body:
-  - email: User's email address (string)
-  - username: User's username (string)
-  - password: User's password (string)
-- Response:
-  - Status Code: 201
-  - Body:
-    - user: User object (object)
+The frontend architecture follows a component-based structure where each page and reusable UI element is encapsulated within its own component.
 
-### 2. User Login
-- URL: /api/v1/users/login
-- Method: POST
-- Request Body:
-  - username or email: User's username or email address (string)
-  - password: User's password (string)
-- Response:
-- Status Code: 200
-  - Body:
-    - user: User object (object)
-    - accessToken: JWT access token (string)
+### Components
 
-### 3. User Logout
-- URL: /api/v1/users/logout
-- Method: POST
-- Request Header:
-  - Authorization: Bearer token (string)
-- Response:
-  - Status Code: 200
-  - Body: {}
+1. Header: Displays the application header with navigation links.
+2. Input: Renders an input field with label and error messages.
+3. Spinner: Shows a loading spinner animation.
+4. LoginForm: Displays a form for users to log in.
+5. SignupForm: Displays a form for users to sign up.
+6. ChangePasswordForm: Allows users to change their passwords.
 
-### 4. Change Password
-- URL: /api/v1/users/change-password
-- Method: POST
-- Request Body:
-  - oldPassword: User's old password (string)
-  - newPassword: User's new password (string)
-- Request Header:
-  - Authorization: Bearer token (string)
-- Response:
-  - Status Code: 200
-  - Body: {}
+## Functionality
 
-### 5. Get Current User
-- URL: /api/v1/users/current-user
-- Method: GET
-- Request Header:
-  - Authorization: Bearer token (string)
-- Response:
-  - Status Code: 200
-  - Body: User object
+### Authentication
 
-## Error Handling
-Errors are handled centrally using a custom error handling middleware. Errors are returned with appropriate status codes and error messages.
+- Registration: Users can create a new account by providing an email, username, and password.
+- Login: Existing users can log in using their username and password.
+- Logout: Logged-in users can log out of their accounts.
+- Password Change: Users can change their passwords after logging in.
 
-## Validation
-Request data is validated using express-validator middleware. Errors are returned with appropriate status codes and error messages.
+### State Management
 
-<hr>
+- Context API: Manages user authentication state using React Context API.
+- LocalStorage: Stores authentication token in the browser's local storage for persistent login sessions.
 
-This documentation provides a brief overview of the backend application, including installation instructions, endpoints, error handling, and validation. For more detailed information, refer to the source code and documentation comments.
+### Routing
+
+- React Router: Handles client-side routing for different application views and pages.
+- Protected Routes: Restricts access to certain routes for authenticated users only.
+
+## Deployment
+
+The frontend application is deployed on a web server and interacts with the backend API to perform authentication-related tasks.
+
+### Environment Variables
+
+- VITE_APP_VERCEL_URL: Base URL of the backend API server.
+
+## Conclusion
+
+The frontend of the authentication app provides a user-friendly interface for users to register, log in, and manage their accounts securely. It leverages modern web technologies to deliver a seamless user experience while ensuring data privacy and security.
