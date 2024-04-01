@@ -54,4 +54,55 @@ yarn start
   - Status Code: 201
   - Body:
     - user: User object (object)
+
+### 2. User Login
+- URL: /api/v1/users/login
+- Method: POST
+- Request Body:
+  - username or email: User's username or email address (string)
+  - password: User's password (string)
+- Response:
+- Status Code: 200
+  - Body:
+    - user: User object (object)
     - accessToken: JWT access token (string)
+
+### 3. User Logout
+- URL: /api/v1/users/logout
+- Method: POST
+- Request Header:
+  - Authorization: Bearer token (string)
+- Response:
+  - Status Code: 200
+  - Body: {}
+
+### 4. Change Password
+- URL: /api/v1/users/change-password
+- Method: POST
+- Request Body:
+  - oldPassword: User's old password (string)
+  - newPassword: User's new password (string)
+- Request Header:
+  - Authorization: Bearer token (string)
+- Response:
+  - Status Code: 200
+  - Body: {}
+
+### 5. Get Current User
+- URL: /api/v1/users/current-user
+- Method: GET
+- Request Header:
+  - Authorization: Bearer token (string)
+- Response:
+  - Status Code: 200
+  - Body: User object
+
+## Error Handling
+Errors are handled centrally using a custom error handling middleware. Errors are returned with appropriate status codes and error messages.
+
+## Validation
+Request data is validated using express-validator middleware. Errors are returned with appropriate status codes and error messages.
+
+<hr>
+
+This documentation provides a brief overview of the backend application, including installation instructions, endpoints, error handling, and validation. For more detailed information, refer to the source code and documentation comments.
